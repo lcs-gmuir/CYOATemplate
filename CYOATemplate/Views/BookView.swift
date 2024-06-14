@@ -40,12 +40,12 @@ struct BookView: View {
 
                 if book.isBeingRead {
                     
-                    HStack {
-                        Text("\(book.currentPageId!)")
-                            .font(.custom(book.reader.currentFont ?? "System", fixedSize: CGFloat(book.reader.currentSize ?? 20)))
-                        Spacer()
-                    }
-                    .padding()
+//                    HStack {
+//                        Text("\(book.currentPageId!)")
+//                            .font(.custom(book.reader.currentFont ?? "System", fixedSize: CGFloat(book.reader.currentSize ?? 20)))
+//                        Spacer()
+//                    }
+//                    .padding()
                     
                     PageView(
                         viewModel: PageViewModel(book: book)
@@ -59,42 +59,48 @@ struct BookView: View {
             // Add our object to track state into the environment
             // so it is accessible to the other views in the app
             .environment(book)
+            
             // Toolbar to show buttons for various actions
+            
             .toolbar {
-                
+                // Back button
                 ToolbarItem(placement: .topBarLeading) {
-                        Image(systemName: "arrow.left")
-                        .foregroundColor(/*@START_MENU_TOKEN@*/.blue/*@END_MENU_TOKEN@*/)
+                    Image(systemName: "arrow.left")
+                        .foregroundColor(.blue)
+                        .padding()
+                        .background(Circle().fill(Color.white.opacity(0.8)).frame(width: 40, height: 40))
                         .onTapGesture {
-                            showConfirmation.toggle()                       }
-                    }
+                            showConfirmation.toggle()
+                        }
+                }
 
-                
-
-                
-                
                 // Show the statistics view
                 ToolbarItem(placement: .automatic) {
-                    Button {
+                    Button(action: {
                         showingStatsView = true
-                    } label: {
+                    }) {
                         Image(systemName: "chart.pie.fill")
+                            .padding()
+                            .background(Circle().fill(Color.white.opacity(0.8)).frame(width: 40, height: 40))
                     }
-
                 }
-                
+
                 // Show the settings view
                 ToolbarItem(placement: .automatic) {
-                    Button {
+                    Button(action: {
                         showingSettingsView = true
-                    } label: {
+                    }) {
                         Image(systemName: "gear")
+                            .padding()
+                            .background(Circle().fill(Color.white.opacity(0.8)).frame(width: 40, height: 40))
                     }
-
                 }
-               
-
             }
+            .toolbarBackground(Color.clear, for: .navigationBar)
+            .toolbarBackground(.hidden, for: .navigationBar)
+
+
+                
             
             .confirmationDialog("ARE YOU SURE", isPresented: $showConfirmation, titleVisibility: .visible) {
                 Button(role: .destructive) {
