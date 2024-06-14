@@ -68,7 +68,7 @@ struct BookView: View {
                     Image(systemName: "arrow.left")
                         .foregroundColor(.blue)
                         .padding()
-                        .background(Circle().fill(Color.white).frame(width: 40, height: 40))
+                        .background(Circle().fill(Color.white.opacity(0.7)).frame(width: 40, height: 40))
                         .shadow(radius: 5)
                         .onTapGesture {
                             showConfirmation.toggle()
@@ -82,7 +82,7 @@ struct BookView: View {
                     }) {
                         Image(systemName: "chart.pie.fill")
                             .padding()
-                            .background(Circle().fill(Color.white).frame(width: 40, height: 40))
+                            .background(Circle().fill(Color.white.opacity(0.7)).frame(width: 40, height: 40))
                             .shadow(radius: 5)
                     }
                 }
@@ -94,11 +94,12 @@ struct BookView: View {
                     }) {
                         Image(systemName: "gear")
                             .padding()
-                            .background(Circle().fill(Color.white).frame(width: 40, height: 40))
+                            .background(Circle().fill(Color.white.opacity(0.7)).frame(width: 40, height: 40))
                             .shadow(radius: 5)
                     }
                 }
             }
+
 
                 
             
