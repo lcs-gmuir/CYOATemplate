@@ -34,6 +34,8 @@ class BookStore: Observable {
         
     }
     
+   
+    
     // Is the book being read at the moment?
     var isBeingRead: Bool {
         

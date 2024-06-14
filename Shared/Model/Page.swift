@@ -6,6 +6,8 @@
 //
 
 import Foundation
+import AVFAudio
+
 
 struct Page: Identifiable, Codable {
     
@@ -33,4 +35,12 @@ struct Page: Identifiable, Codable {
         return endingTypeId != nil
     }
     
+    
+
+    
 }
+
+    
+            
+        
+
