@@ -22,7 +22,7 @@ struct EdgesView: View {
     // then EdgesView will be re-loaded, updating the text
     let viewModel: EdgesViewModel
     
-    @State private var showingAddition = false
+    @State private var showingAdditionView = false
 
     // Whether the challenge/quiz view is being shown right now
     
@@ -76,7 +76,7 @@ struct EdgesView: View {
                                 
                                 if quizResult == .quizNotActive ||
                                     quizResult == .wasNotCorrect {
-                                    showingAddition = true
+                                    showingAdditionView = true
                                 } else {
                                     
                                     // Question answered correctly, allow reader to move on
@@ -107,8 +107,8 @@ struct EdgesView: View {
                 
         }
         // Show the quiz view
-        .sheet(isPresented: $showingAddition) {
-            Addition(showing: $showingAddition)
+        .sheet(isPresented: $showingAdditionView) {
+            additionView(showing: $showingAdditionView)
                 // Make the book state accessible to SettingsView
                 .environment(book)
              .presentationDetents([.medium, .fraction(0.33)])

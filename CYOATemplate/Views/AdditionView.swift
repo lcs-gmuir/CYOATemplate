@@ -9,18 +9,18 @@ import SwiftUI
 
 
 
-struct Addition: View {
+struct additionView: View {
     @Binding var showing: Bool
 
-    @State var providedAnswer: Int = 1
+    @State var providedAnswer: Int = 0
     @State var x = Int.random(in: 1...20)
 
     @State var y = Int.random(in: 1...20)
 
- 
+
     var body: some View {
-        Text("\(x)")
-        Text("\(y)")
+        Text("\(x)+\(y)= ?")
+     
         let z = x + y
         
         if z == providedAnswer {
@@ -29,6 +29,11 @@ struct Addition: View {
         else{
             Text("nooo")
         }
+        TextField("Enter number", value: $providedAnswer, format: .number)
+                    .padding()
+                    .textFieldStyle(RoundedBorderTextFieldStyle())
+                    .padding()
+                    .keyboardType(.numberPad)
     }
 }
 
