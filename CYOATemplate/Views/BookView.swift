@@ -26,6 +26,9 @@ struct BookView: View {
     //Auto Font
     @State private var currentFont: String = "System"
     
+    //Auto Font
+    @State private var currentColour: String = "primary"
+    
     //Auto Size
     @State private var currentSize: Int = 20
     
@@ -43,6 +46,7 @@ struct BookView: View {
                     HStack {
                         Text("\(book.currentPageId!)")
                             .font(.custom(book.reader.currentFont ?? "System", fixedSize: CGFloat(book.reader.currentSize ?? 20)))
+                            .foregroundColor(book.reader.color)
                         Spacer()
                     }
                     .padding()
@@ -117,7 +121,7 @@ struct BookView: View {
                 SettingsView(showing: $showingSettingsView)
                     // Make the book state accessible to SettingsView
                     .environment(book)
-                    .presentationDetents([.fraction(0.6)])
+                    .presentationDetents([.fraction(0.7)])
             }
             // Respond when app is backgrounded, foregrounded, or made inactive
             .onChange(of: scenePhase) {

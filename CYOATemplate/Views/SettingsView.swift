@@ -13,6 +13,8 @@ struct SettingsView: View {
     
     @State private var currentFont: String = "System"
     
+    @State private var currentBackground: String = "none"
+    
     @State private var currentSize: Int = 20
     
     // Whether this view is showing in the sheet right now
@@ -43,6 +45,9 @@ struct SettingsView: View {
                     .padding()
                     
                     HStack{
+                        
+                        Spacer()
+                        
                         VStack{
                             // user can select a font type
                             Text("Select Font")
@@ -54,7 +59,7 @@ struct SettingsView: View {
                                 book.reader.currentFont = "Superclarendon-Light"
                                 currentFont = "Superclarendon-Light"
                             }
-                            .font(.custom("Superclarendon-Light", size: 30))
+                            .font(.custom("Superclarendon-Light", size: 25))
                             .foregroundColor(.primary)
                             
                             
@@ -62,7 +67,7 @@ struct SettingsView: View {
                                 book.reader.currentFont = "Chalkduster"
                                 currentFont = "Chalkduster"
                             }
-                            .font(.custom("Chalkduster", size: 30))
+                            .font(.custom("Chalkduster", size: 25))
                             .foregroundColor(.primary)
                             
                             
@@ -70,24 +75,26 @@ struct SettingsView: View {
                                 book.reader.currentFont = "TimesNewRomanPSMT"
                                 currentFont = "TimesNewRomanPSMT"
                             }
-                            .font(.custom("TimesNewRomanPSMT", size: 30))
+                            .font(.custom("TimesNewRomanPSMT", size: 25))
                             .foregroundColor(.primary)
                             
                             Button("Font 4"){
                                 book.reader.currentFont = "SnellRoundhand-Bold"
                                 currentFont = "SnellRoundhand-Bold"
                             }
-                            .font(.custom("SnellRoundhand-Bold", size: 30))
+                            .font(.custom("SnellRoundhand-Bold", size: 25))
                             .foregroundColor(.primary)
                         }
+                        
+                        Spacer()
                         
                         VStack{
                             // user can select a font size
                             Text("Select Font Size")
                                 .bold()
                                 .underline()
-                                .padding()
                             
+                            Spacer()
                             
                             Button("Aa"){
                                 book.reader.currentSize = 15
@@ -95,7 +102,7 @@ struct SettingsView: View {
                             }
                             .font(.custom("System", size: 15))
                             .foregroundColor(.primary)
-
+                            
                             
                             Button("Aa"){
                                 book.reader.currentSize = 20
@@ -119,11 +126,110 @@ struct SettingsView: View {
                             .font(.custom("System", size: 35))
                             .foregroundColor(.primary)
                             
+                            Spacer()
+                            
                         }
                         
+                        Spacer()
                     }
-                 
-                  
+                    
+                    Text("Select Font Colour")
+                        .bold()
+                        .underline()
+                    
+                    HStack{
+                        Button(" "){
+                            book.reader.currentColour = "red"
+                        }
+                        .padding()
+                        .background(Color(.red))
+                        .clipShape(Circle())
+                        
+                        Button(" "){
+                            book.reader.currentColour = "orange"
+                        }
+                        .padding()
+                        .background(Color(.orange))
+                        .clipShape(Circle())
+                        
+                        
+                        Button(" "){
+                            book.reader.currentColour = "yellow"
+                        }
+                        .padding()
+                        .background(Color(.yellow))
+                        .clipShape(Circle())
+                        
+                        
+                        Button(" "){
+                            book.reader.currentColour = "green"
+                        }
+                        .padding()
+                        .background(Color(.green))
+                        .clipShape(Circle())
+                        
+                        Button(" "){
+                            book.reader.currentColour = "blue"
+                        }
+                        .padding()
+                        .background(Color(.blue))
+                        .clipShape(Circle())
+                        
+                        Button(" "){
+                            book.reader.currentColour = "purple"                        }
+                        .padding()
+                        .background(Color(.purple))
+                        .clipShape(Circle())
+                        
+                        
+                    }
+                    
+                   Spacer()
+                    
+                    Text("Select Background")
+                        .bold()
+                        .underline()
+
+                    
+                    HStack{
+                        //wallpaper 1
+                        Button(action: {
+                            book.reader.currentBackground = "wallpaper1"
+                            currentFont = "wallpaper1"
+                                }) {
+                                    Image("wallpaper1")
+                                        .resizable()
+                                        .scaledToFit()
+                                        .frame(width: 100)
+                                }
+                                .buttonStyle(PlainButtonStyle())
+                    //wallpaper 2
+                        Button(action: {
+                            book.reader.currentBackground = "wallpaper2"
+                            currentFont = "wallpaper2"
+                                }) {
+                                    Image("wallpaper2")
+                                        .resizable()
+                                        .scaledToFit()
+                                        .frame(width: 100)
+                                }
+                                .buttonStyle(PlainButtonStyle())
+                        
+                        
+                    //wallpaper 3
+                        Button(action: {
+                            book.reader.currentBackground = "wallpaper3"
+                            currentFont = "wallpaper3"
+                                }) {
+                                    Image("wallpaper3")
+                                        .resizable()
+                                        .scaledToFit()
+                                        .frame(width: 100)
+                                }
+                                .buttonStyle(PlainButtonStyle())
+                    }
+                    
+                    
                     Spacer()
                     
                     
@@ -131,7 +237,7 @@ struct SettingsView: View {
             }
             
             .padding()
-            .navigationTitle("Statistics")
+            .navigationTitle("Settings")
             // Toolbar to show buttons for various actions
             .toolbar {
                 

@@ -45,7 +45,7 @@ let gradient = Gradient(colors: [color0, color1]);
                         
                         VStack{
                             // Show the cover
-                            Text("The Magial Forest")
+                            Text("The Magical Forest")
                                 .font(.system(size: 50))
                                         .fontWeight(.bold)
                                         .foregroundColor(Color(red: 0.68, green: 0.85, blue: 10)) // Light pastel blue color
