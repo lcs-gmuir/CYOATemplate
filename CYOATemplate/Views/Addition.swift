@@ -7,6 +7,8 @@
 
 import SwiftUI
 
+
+
 struct Addition: View {
     @State var providedAnswer: Int = 1
     @State var x = Int.random(in: 1...20)
@@ -28,6 +30,4 @@ struct Addition: View {
     }
 }
 
-#Preview {
-    Addition()
-}
+
