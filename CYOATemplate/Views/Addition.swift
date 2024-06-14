@@ -10,6 +10,8 @@ import SwiftUI
 
 
 struct Addition: View {
+    @Binding var showing: Bool
+
     @State var providedAnswer: Int = 1
     @State var x = Int.random(in: 1...20)
 
