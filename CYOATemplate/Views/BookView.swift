@@ -70,8 +70,11 @@ struct BookView: View {
                     }
 
                 
-
-                
+                if book.currentPageId !=
+                ToolbarItem(placement: .principal) {
+                    Text("\(book.currentPageId!)")
+                           .font(.headline)
+                   }
                 
                 // Show the statistics view
                 ToolbarItem(placement: .automatic) {
