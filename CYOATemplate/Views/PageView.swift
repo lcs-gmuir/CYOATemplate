@@ -11,7 +11,7 @@ import AVFoundation
 struct PageView: View {
 
     // MARK: Stored properties
-    
+
     @State private var currentFont: String = "System"
 
     @State private var currentSize: Int = 20

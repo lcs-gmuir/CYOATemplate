@@ -32,6 +32,15 @@ struct SettingsView: View {
         return NavigationStack {
             ScrollView{
                 VStack {
+                    
+//                    Toggle(isOn: $book.reader.preferstextspeech) {
+//                        Label {
+//                            Text("Text To Speech")
+//                        } icon: {
+//                            Image(systemName: "moonphase.first.quarter")
+//                        }
+//                    }
+                    
                     Toggle(isOn: $book.reader.prefersDarkMode) {
                         Label {
                             Text("Dark Mode")
