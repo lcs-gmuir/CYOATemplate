@@ -14,7 +14,7 @@ struct additionView: View {
 
     @State var providedAnswer: Int = 0
     @State var x = Int.random(in: 1...20)
-
+    @State var Right: Bool = false
     @State var y = Int.random(in: 1...20)
 
 
@@ -24,10 +24,17 @@ struct additionView: View {
         let z = x + y
         
         if z == providedAnswer {
-            Text("yay")
-        }
+            Button(action: {
+                Right = true
+                    }) {
+                        Image(systemName: "checkmark.rectangle.fill")
+                            .resizable()
+                            .aspectRatio(contentMode: .fit)
+                            .frame(width: 60, height: 60)
+                    }
+                        }
         else{
-            Text("nooo")
+            Text("type in the correct answer")
         }
         TextField("Enter number", value: $providedAnswer, format: .number)
                     .padding()

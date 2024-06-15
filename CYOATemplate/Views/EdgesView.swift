@@ -74,8 +74,7 @@ struct EdgesView: View {
                             
                             if edge.prompt.contains("Turn to next page") {
                                 
-                                if quizResult == .quizNotActive ||
-                                    quizResult == .wasNotCorrect {
+                             
                                     showingAdditionView = true
                                 } else {
                                     
@@ -84,13 +83,7 @@ struct EdgesView: View {
 
                                 }
                                 
-                            } else {
-
-                                // Move to page edge connects to
-                                // (No prompt for quiz on pages that have multiple options)
-                                book.read(edge.toPage)
-
-                            }
+                           
                             
                             // DEBUG
                             print("==== changed page ====")
