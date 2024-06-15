@@ -68,13 +68,19 @@ struct EdgesView: View {
                                 if quizResult == .quizNotActive ||
                                     quizResult == .wasNotCorrect {
                                     showingAdditionView = true
-                                }
-                                else {
+                                } else {
                                     
+                                    // Question answered correctly, allow reader to move on
+                                    book.read(edge.toPage)
+
+                                }
                                 
-                                        book.read(edge.toPage)
-                                    
-                                }
+                            } else {
+
+                                // Move to page edge connects to
+                                // (No prompt for quiz on pages that have multiple options)
+                                book.read(edge.toPage)
+
                             }
                             
                             // DEBUG
