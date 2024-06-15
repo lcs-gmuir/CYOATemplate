@@ -12,6 +12,7 @@ struct Reader: Identifiable, Codable {
     var id: Int?
     var name: String?
     var prefersDarkMode: Bool
+//    var perfersTextSpeech: Bool
     var currentFont: String?
     var currentSize: Int?
     var lastPageReadId: Int?
@@ -21,6 +22,7 @@ struct Reader: Identifiable, Codable {
     enum CodingKeys: String, CodingKey {
         case id
         case name
+//        case prefersTextSpeech = "prefers_text_speech"
         case currentFont = "current_font"
         case currentSize = "current_size"
         case prefersDarkMode = "prefers_dark_mode"

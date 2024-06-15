@@ -1,10 +1,3 @@
-//
-//  EdgesView.swift
-//  CYOATemplate
-//
-//  Created by Russell Gordon on 2023-06-01.
-//
-
 import SwiftUI
 
 struct EdgesView: View {
@@ -22,12 +15,11 @@ struct EdgesView: View {
     // then EdgesView will be re-loaded, updating the text
     let viewModel: EdgesViewModel
     
-    // Whether the challenge/quiz view is being shown right now
-    @State private var showingQuizView = false
-    
+    @State private var showingAdditionView = false
+
     // Whether the quiz question was answered correctly
     @State private var quizResult: QuizResult = .quizNotActive
-
+    
     // MARK: Computed properties
     var body: some View {
         
@@ -71,24 +63,18 @@ struct EdgesView: View {
                             print("Current page number is: \(book.currentPageId!)")
                             print("==== about to change page ====")
                             
-                            if edge.prompt.contains("Turn to the next page") {
+                            if edge.prompt.contains("Turn to next page") {
                                 
                                 if quizResult == .quizNotActive ||
                                     quizResult == .wasNotCorrect {
-                                    showingQuizView = true
-                                } else {
-                                    
-                                    // Question answered correctly, allow reader to move on
-                                    book.read(edge.toPage)
-
+                                    showingAdditionView = true
                                 }
+                                else {
+                                    
                                 
-                            } else {
-
-                                // Move to page edge connects to
-                                // (No prompt for quiz on pages that have multiple options)
-                                book.read(edge.toPage)
-
+                                        book.read(edge.toPage)
+                                    
+                                }
                             }
                             
                             // DEBUG
@@ -106,20 +92,12 @@ struct EdgesView: View {
                 
         }
         // Show the quiz view
-        .sheet(isPresented: $showingQuizView) {
-            VocabularyQuizView(
-                showing: $showingQuizView,
-                result: $quizResult
-            )
-            .presentationDetents([.medium, .fraction(0.33)])
+        .sheet(isPresented: $showingAdditionView) {
+            additionView(showing: $showingAdditionView, quizResult: $quizResult)
+                // Make the book state accessible to SettingsView
+                .environment(book)
+             .presentationDetents([.medium, .fraction(0.33)])
         }
-
-
     }
 }
 
-#Preview {
-    EdgesView(
-        viewModel: EdgesViewModel(book: BookStore())
-    )
-}
