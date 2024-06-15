@@ -1,10 +1,3 @@
-//
-//  EdgesView.swift
-//  CYOATemplate
-//
-//  Created by Russell Gordon on 2023-06-01.
-//
-
 import SwiftUI
 
 struct EdgesView: View {
@@ -24,11 +17,9 @@ struct EdgesView: View {
     
     @State private var showingAdditionView = false
 
-    // Whether the challenge/quiz view is being shown right now
-    
     // Whether the quiz question was answered correctly
     @State private var quizResult: QuizResult = .quizNotActive
-
+    
     // MARK: Computed properties
     var body: some View {
         
@@ -74,7 +65,8 @@ struct EdgesView: View {
                             
                             if edge.prompt.contains("Turn to next page") {
                                 
-                             
+                                if quizResult == .quizNotActive ||
+                                    quizResult == .wasNotCorrect {
                                     showingAdditionView = true
                                 } else {
                                     
@@ -83,7 +75,13 @@ struct EdgesView: View {
 
                                 }
                                 
-                           
+                            } else {
+
+                                // Move to page edge connects to
+                                // (No prompt for quiz on pages that have multiple options)
+                                book.read(edge.toPage)
+
+                            }
                             
                             // DEBUG
                             print("==== changed page ====")
@@ -101,18 +99,11 @@ struct EdgesView: View {
         }
         // Show the quiz view
         .sheet(isPresented: $showingAdditionView) {
-            additionView(showing: $showingAdditionView)
+            additionView(showing: $showingAdditionView, quizResult: $quizResult)
                 // Make the book state accessible to SettingsView
                 .environment(book)
              .presentationDetents([.medium, .fraction(0.33)])
         }
-
-
     }
 }
 
-#Preview {
-    EdgesView(
-        viewModel: EdgesViewModel(book: BookStore())
-    )
-}

@@ -10,14 +10,18 @@ import SwiftUI
 
 
 struct additionView: View {
+    
+  
+
     @Binding var showing: Bool
 
     @State var providedAnswer: Int = 0
     @State var x = Int.random(in: 1...20)
     @State var Right: Bool = false
     @State var y = Int.random(in: 1...20)
+    @Binding var quizResult: QuizResult
 
-
+   
     var body: some View {
         Text("\(x)+\(y)= ?")
      
@@ -25,13 +29,22 @@ struct additionView: View {
         
         if z == providedAnswer {
             Button(action: {
-                Right = true
-                    }) {
+                // Set quizResult to .wasCorrect
+                quizResult = .wasCorrect
+                // Print statement for debugging
+                print("QuizResult set to .wasCorrect")
+                // Dismiss the view
+                showing = false
+                // Print statement for debugging
+                print("Sheet dismissed")
+
+            }) {
                         Image(systemName: "checkmark.rectangle.fill")
                             .resizable()
                             .aspectRatio(contentMode: .fit)
                             .frame(width: 60, height: 60)
                     }
+            
                         }
         else{
             Text("type in the correct answer")
@@ -43,5 +56,36 @@ struct additionView: View {
                     .keyboardType(.numberPad)
     }
 }
+
+
+
+//import SwiftUI
+//struct additionView: View {
+//    
+//    @Binding var showing: Bool
+//    @Binding var quizResult: QuizResult
+//    
+//    var body: some View {
+//        VStack {
+//            Text("Quiz Question")
+//            // Your quiz question goes here
+//            
+//            Button(action: {
+//                // Set quizResult to .wasCorrect
+//                quizResult = .wasCorrect
+//                // Print statement for debugging
+//                print("QuizResult set to .wasCorrect")
+//                // Dismiss the view
+//                showing = false
+//                // Print statement for debugging
+//                print("Sheet dismissed")
+//            }) {
+//                Text("Submit Answer")
+//            }
+//        }
+//        .padding()
+//    }
+//}
+
 
 
