@@ -31,6 +31,8 @@ struct additionView: View {
             Button(action: {
                 // Set quizResult to .wasCorrect
                 quizResult = .wasCorrect
+        print("QuizResult set to .wasCorrect")
+
                 // Print statement for debugging
                 print("QuizResult set to .wasCorrect")
                 // Dismiss the view
@@ -58,34 +60,6 @@ struct additionView: View {
 }
 
 
-
-//import SwiftUI
-//struct additionView: View {
-//    
-//    @Binding var showing: Bool
-//    @Binding var quizResult: QuizResult
-//    
-//    var body: some View {
-//        VStack {
-//            Text("Quiz Question")
-//            // Your quiz question goes here
-//            
-//            Button(action: {
-//                // Set quizResult to .wasCorrect
-//                quizResult = .wasCorrect
-//                // Print statement for debugging
-//                print("QuizResult set to .wasCorrect")
-//                // Dismiss the view
-//                showing = false
-//                // Print statement for debugging
-//                print("Sheet dismissed")
-//            }) {
-//                Text("Submit Answer")
-//            }
-//        }
-//        .padding()
-//    }
-//}
 
 
 
